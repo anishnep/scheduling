@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{% static 'css/calendar.css' %}">
+{% endblock %}
+{% block content %}
+<div class="row">
+<div class="col-lg-12">
+   <div id="modal-holder"></div>
+        
+    <div id="cal-nav">
+        <table>
+            <tr>
+                <td class="previous"><a href="{% url 'employee_schedule:calendar' PreviousYear PreviousMonth %}" class="btn btn-primary">
+                    <i class="fa fa-chevron-left"></i></a>
+                </td>
+                <td class="emp-name">{{emp.get_full_name}}</td>
+                <td class="next"><a href="{% url 'employee_schedule:calendar' Nextyear NextMonth %}" class="btn btn-primary">
+                    <i class="fa fa-chevron-right"></i></a>
+                </td>
+            </tr>
+        </table>    
+    </div>
+    
+    <div id="calendar">
+    
+        {{calendar}}
+        
+    </div>
+{% endblock %}
+</div>
+</div>
+{% block scripts %}
+    <script src="{% static 'js/calendar.js' %}"></script>
+{% endblock %}
+
+
+

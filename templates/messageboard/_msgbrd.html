@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block content %}
+    <form id="post-form" action="" method="post" role="form">
+    {% csrf_token %}
+    <input id="msgbox" type="text" placeholder="Enter your post here">
+    <span><button type="submit" id="post-btn">Post</button></span>
+                                
+    </form>
+    <ol id="post-list">
+        {% for post in post_list %}
+        <li class="post-list-item">
+            <div class="post-wrapper">
+                 {{post.message}}
+                <br>
+                <a href="#" class="show-comment-list" data-post-id={{post.id}}>show comments</a>
+                <br>
+            </div>
+            <form class="comment-form" action="" method="post" role="form">
+            {% csrf_token %}
+                <input id="comment-input-{{post.id}}" class="comment-input" type="text"  data-post-id={{post.id}} placeholder="Enter your comment here">
+                <span><input type="submit" id="send-btn-{{post.id}}" class="send-btn" data-postid={{post.id}} value="go" disabled></span>
+            </form>
+                            
+                            
+            <ul id="comment-list-{{post.id}}" class="all-comment-list">
+                {% for comment in post.comment_set.all %}
+                <li class="comment-list-item">
+                    <div class="comment-content">
+                    {{comment.comment_text}}
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </li>
+        {% endfor %}
+    </ol>
+    
+    
+    
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript" src="{% static 'js/_msgbrd.js' %}"></script>
+{% endblock %}

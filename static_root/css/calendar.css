@@ -1,0 +1,93 @@
+#calendar td, tr, th{
+    border: 1px solid white;
+    text-align: center;
+    font-weight: bold;
+}
+
+#calendar .today{
+    border: 5px solid #19A9B7;
+}
+
+#calendar td{
+    cursor: pointer;
+}
+#calendar table{
+    width: 100%;
+    height: 80vh;
+    table-layout: fixed;
+     background-color: #eee;
+}
+
+#cal-nav table{
+    width: 100%;
+    background-color: black;
+    color: white;
+}
+#cal-nav td{
+    text-align: center;
+}
+.previous {
+    float: left;
+}
+.next{
+    float: right;
+}
+
+#calendar th {
+        background-color: #5266A2;
+        height: 25px;
+        color: white;
+        text-align: center;
+    }
+#calendar td:hover {
+    background-color: #C2C2D6;
+}
+#calendar a:link {
+        text-decoration: none;
+        color: black;
+    }
+
+.today{
+    border: 2px solid yellow;
+}
+
+.workday {
+        border-radius: 10%;
+        background-color: green ;
+        font-weight: bolder;
+        color: white;
+        
+    }
+.noworkday {
+        border-radius: 10%;
+        background-color: brown;
+        color: white;
+    }
+.noday {
+        
+        border: hidden;
+        background-color: white;
+        cursor: not-allowed;
+    }
+    
+
+.full-height{
+    height: 100%;
+}
+
+.hidden {
+    display: none;
+}
+.visible {
+    display: block;
+}
+
+.infobox{
+    
+    width: auto;
+    height: auto;
+    background-color: yellow;
+    box-shadow: 10px 10px 5px grey;
+}
+
+

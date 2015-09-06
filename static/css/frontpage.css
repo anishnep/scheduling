@@ -1,0 +1,46 @@
+.no-padding{
+    padding: 0px;
+}
+
+.no-margin{
+    margin: 0px; 
+}
+
+.jumbotron{
+    background-image: url("../img/bkg.png");
+    background-size: cover;
+}
+h1 {
+    font-family: fantasy;
+        
+    font-size: 25px;
+}
+footer p{
+    color: white;
+}
+
+.navbar{
+    margin-bottom: 0;
+}
+body {
+    padding-top: 45px;
+}
+.well{
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#feature-list {
+    list-style-image: url('../img/tick.png');
+    font-weight: bold;
+    font-size: 20px;
+    
+}
+#feature-list li{
+    padding: 5px;
+    font-size: 25;
+    font-family: verdana;
+}
+
+

@@ -1,0 +1,69 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static "css/frontpage.css" %}">
+    
+    <title>My bootstrap Page</title>
+</head>
+<body>
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mynavbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">SMARTSCHED</a>
+            
+                
+             </div>
+                         
+            <div class="collapse navbar-collapse" id="mynavbar">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="{%url 'home' %}">Home</a></li>
+                    <li><a href="about.html">Features</a></li>
+                    <li><a href="contact.html">pricing</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{% url 'registration:login' %}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                </ul>
+            </div>
+       </div>
+    </nav>
+    
+    <section>
+        {% block content %}
+        {% endblock %}
+    </section>
+    
+    <footer>
+        <div class="container-fluid">
+            <div class="row" id="foot">
+                <div class="col-xs-6 " style="background-color: black; color:white;">
+                    
+                    <p>Copyright @Anish Nepal</p>
+                </div>
+                <div class="col-xs-6" style="background-color: grey; color:white;">
+                    <p>Be connected with us</p>
+                    <span><i class="icon-large icon-facebook icon-white"></i></span>
+                        
+                    
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+</body>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+</html>

@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{% static 'css/msgboard.css' %}">
+{% endblock %}
+{% block heading %}
+    <h1> Message Board</h1>
+{% endblock %}
+
+{% block content %}
+
+    <div class="row">
+        <div class = "col-lg-6 col-lg-offset-2">
+            <div class="well well-sm" style="margin-bottom:10px;">
+                <form id="post-form" action="" method="POST" role="form">
+                    {% csrf_token %}
+                    <div class="form-group nomargin">
+                    
+                        <textarea id="msgbox" class="form-control" rows="3" placeholder="Post your message here"></textarea>
+                    </div>
+ 
+                      <button type="submit" class="btn btn-default" id="post-btn">Post</button>
+                      <div id="error-div"></div>
+                </form>
+            
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class = "col-lg-6 col-lg-offset-2">
+        
+             <ul id="post-list">   
+               {% for post in post_list %}
+                   <li>
+                <div id="post-{{post.id}}" class="well well-sm" style="margin-bottom:10px;">
+                <div class="post-displaybox">
+                <div class="media">
+                     <div class="media-left">
+                        <a href="#">
+                      <img class="media-object" src="{% static 'img/user_icon.png' %}" alt="img" height="50" width="50">
+                        </a>
+                        
+                      </div>
+                      <div class="media-body">
+                            <strong class="media-heading">
+                                <a href="#">{{post.posted_by}}</a><br>
+                                <p>{{post.created_at}}</p>
+                                
+                            </strong>
+                            <h4>{{post.message}}</h4>
+    
+                     </div>
+                </div>
+                <a href="#" class="comment-btn" data-post-id={{post.id}}><span id="comment-counter-{{post.id}}">{{post.comment_set.count}}</span> comment{{post.comment_set.count|pluralize}}</a>
+                </div>
+                <div class="post-comment-box" style="margin-bottom:5px;background-color:white;">
+                    <div class="media">
+                         <div class="media-left">
+                            <a href="#">
+                              <img class="media-object" src="{% static 'img/user_icon.png' %}" alt="img" height="30" width="30">
+                            </a>
+                        
+                          </div>
+                          <div class="media-body">
+                             <form class="comment-form" action="" method="post" role="form">
+                                 {% csrf_token %}
+                                <div class="input-group">
+                                     <input id="comment-input-{{post.id}}" type="text" class="form-control" placeholder="Enter your comment here">
+                                      <span class="input-group-btn">
+                                        <button class="send-btn btn btn-primary" data-postid={{post.id}}>Go!</button>
+                                      </span>
+                                </div>
+                            </form>
+                          </div>
+                  
+                    </div>
+                </div>
+                
+                {% if post.comment_set %}
+                <ul id="comment-list-{{post.id}}" style="list-style-type:none;">
+                    {% for comment in post.comment_set.all %}
+                    <li>
+                <div class="post-comment-{{post.id}} all-comments-list" data-post-id={{post.id}} style="margin-bottom:5px;background-color:white;">
+                    <div class="media">
+                         <div class="media-left">
+                            <a href="#">
+                              <img class="media-object" src="{% static 'img/user_icon.png' %}" alt="img" height="30" width="30">
+                            </a>
+                        
+                          </div>
+                          <div class="media-body">
+                              <strong class="media-heading">
+                                  <a href="#">{{comment.comment_by}}</a>
+                                </strong><br>
+                                <font size="3">{{comment.comment_text}}</font>
+                             
+                          </div>
+                  </div>
+                </div>
+                    </li>
+                    
+                    {% endfor %}
+                </ul>
+                    
+                {% endif %}
+            
+            </div>
+                   </li>
+               {% endfor %}
+             </ul>
+        </div>
+    </div>
+    
+{% endblock %}  
+
+{% block scripts %}
+    <script src="{% static 'js/msgboard.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% load staticfiles %}
+<div class="post-comment-box" style="margin-bottom:5px;background-color:white;">
+                    <div class="media">
+                         <div class="media-left">
+                            <a href="#">
+                              <img class="media-object" src="{% static 'img/user_icon.png' %}" alt="img" height="30" width="30">
+                            </a>
+                        
+                          </div>
+                          <div class="media-body">
+                             <form class="comment-form" action="" method="post" role="form">
+                                 {% csrf_token %}
+                                <div class="input-group">
+                                     <input id="comment-input-{{post.id}}" type="text" class="form-control comment-input" data-post-id="{{post.id}}" placeholder="Enter your comment here">
+                                      <span class="input-group-btn">
+                                        <input type="submit" id="send-btn-{{post.id}}" class="send-btn btn btn-primary" data-postid={{post.id}} value="Go!" disabled />
+                                      </span>
+                                </div>
+                            </form>
+                          </div>
+                  
+                    </div>
+</div>

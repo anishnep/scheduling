@@ -1,0 +1,32 @@
+{% load staticfiles %}
+{% load humanize %}
+        <div id="post-{{post.id}}" class="well well-sm" style="margin-bottom:10px;">
+                                <div class="post-displaybox">
+                                    <div class="media">
+                                        <div class="media-left">
+                                            <a href="#">
+                                              <img class="media-object" src="{% static 'img/user_icon.png' %}" alt="img" height="50" width="50">
+                                            </a>
+                        
+                                        </div>
+                                        <div class="media-body">
+                                            <div class="media-heading">
+                                                <p class="small-txt"><strong><a href="#">{{post.posted_by}}</a><br>
+                                                <small>{{post.created_at|naturaltime}}</small></strong>
+                                                </p>
+                                            </div>
+                                            <h4>{{post.message}}</h4>
+                                        </div>
+                                    </div>
+                                    <a href="#" class="show-comments-list" data-post-id={{post.id}}><span id="comment-counter-{{post.id}}">{{post.comment_set.count}}</span> comment{{post.comment_set.count|pluralize}}</a>
+                                </div>
+                                {% include "messageboard/post_comment.html" %}
+                                
+                                <ul id="comment-list-{{post.id}}" class="all-comments-list" style="list-style-type:none;">
+                                </ul>
+                                
+                            </div>
+         
+         
+
+             

@@ -1,0 +1,59 @@
+{% extends 'front_base.html' %}
+{% load staticfiles %}
+    {% block content %}
+          <div class="jumbotron text-center">
+              <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xs-12 col-md-12 col-sm-12">
+                            <h1> A smart scheduling solution</h1>
+                            <p class="text-info">
+                                .....probably the most easy way to view and manage your schedule.<br> Login now to start viewing your                                   schedule.
+                            </p>
+                            
+                            <a class="btn btn-primary btn-lg" href="{% url 'registration:login' %}" role="button">Login</a>
+                            
+                        </div>
+              
+                    </div>
+                </div>
+          
+            </div>
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" >
+                    <h1>Easy Scheduling</h1>
+                    <hr>
+                   <ul id= "feature-list">
+                        <li>Easily upload your schedule from Excel to the web</li>
+                        <li>Individual calendar for each employee</li>
+                        <li>Visual representation of workday, freeday</li>
+                        <li>Asking freeday or workday made easy</li>
+                        <li>Fabulous approval system for supervisor</li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                    <img src="{% static "img/frontpageimage.jpg" %}" class="img-responsive" alt="#" />
+                </div>
+            </div>
+            <div class="row text-center">
+                <h1 class="text-cener">Our partner companies..</h1>
+                <hr>
+                <h2 class="text-center">Companies happily using our solution.</h2>
+            </div>
+            
+            <div class="row">
+                <h1>Are you Employer?</h1>
+                <hr>
+                <p class="lead"> If you are an employer and want to use our application for easy schedule
+                management please follow the below link.<br>
+                    **Note: fees may apply.</p>
+                <center><a href="#" class="btn btn-lg btn-primary">I am employer!!</a></center>
+            </div>
+            <hr>
+        </div>
+    </section>
+    {% endblock %}
+    
+    
