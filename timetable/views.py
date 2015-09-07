@@ -4,7 +4,8 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.utils.html import mark_safe
 from schedulecalendar.schedule import ScheduleCalendar
-from timetable.models import Employee, Work, WorkRequest
+from timetable.models import Work, WorkRequest
+from employer.models import Employer, Employee
 
 
 

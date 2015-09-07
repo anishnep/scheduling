@@ -9,43 +9,31 @@ class Migration(migrations.Migration):
 
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
+        ('employer', '0001_initial'),
     ]
 
     operations = [
-        migrations.CreateModel(
-            name='Employee',
-            fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('emp_id', models.IntegerField(verbose_name=b'Employee-ID')),
-                ('first_name', models.CharField(max_length=120)),
-                ('last_name', models.CharField(max_length=120)),
-                ('is_supervisor', models.BooleanField(default=False)),
-            ],
-            options={
-            },
-            bases=(models.Model,),
-        ),
-        migrations.CreateModel(
-            name='Employer',
-            fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('company_name', models.CharField(default=b'<<add your company name>>', max_length=120)),
-                ('user', models.OneToOneField(null=True, blank=True, to=settings.AUTH_USER_MODEL)),
-            ],
-            options={
-            },
-            bases=(models.Model,),
-        ),
         migrations.CreateModel(
             name='Work',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('work_date', models.DateField()),
-                ('has_work', models.BooleanField()),
+                ('has_work', models.BooleanField(default=False)),
+                ('worker_position', models.CharField(max_length=50)),
                 ('start_time', models.CharField(max_length=120, blank=True)),
                 ('end_time', models.CharField(max_length=120, blank=True)),
                 ('notes', models.CharField(max_length=120, null=True, verbose_name=b'Note', blank=True)),
-                ('employee', models.ForeignKey(to='timetable.Employee')),
+                ('employee', models.ForeignKey(to='employer.Employee')),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='WorkPosition',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('position_name', models.CharField(max_length=50)),
             ],
             options={
             },
@@ -66,21 +54,5 @@ class Migration(migrations.Migration):
             options={
             },
             bases=(models.Model,),
-        ),
-        migrations.AddField(
-            model_name='employee',
-            name='employer',
-            field=models.ForeignKey(default=1, to='timetable.Employer'),
-            preserve_default=True,
-        ),
-        migrations.AddField(
-            model_name='employee',
-            name='user',
-            field=models.OneToOneField(null=True, blank=True, to=settings.AUTH_USER_MODEL),
-            preserve_default=True,
-        ),
-        migrations.AlterUniqueTogether(
-            name='employee',
-            unique_together=set([('emp_id', 'employer')]),
         ),
     ]

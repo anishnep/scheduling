@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <style>
+            table, td, th {
+                border: 1px solid black;
+                border-collapse: collapse;
+            }
+        </style>
+    </head>
+<ul>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Full Name</th>
+            <th>E-mail</th>
+            <th>is_supervisor?</th>
+            <th>has_password?</th>
+        </tr>
+        <tr style="border: 1px solid black">
+             {% for employee in employee_list %}
+                <td>{{employee.emp_id}}</td>
+                <td>{{employee.get_full_name}}</td>
+                <td>{{employee.email}}</td>
+                <td>{{employee.is_supervisor}}</td>
+                <td>{{employee.has_got_password}}</td>
+            {% endfor %}
+        </tr>
+    </table>
+   
+    
+</ul>
+
+</html>

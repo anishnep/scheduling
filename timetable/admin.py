@@ -1,5 +1,6 @@
 from django.contrib import admin
-from timetable.models import Employee, Work, Employer, WorkRequest, WorkPosition
+from timetable.models import Work, WorkRequest, WorkPosition
+from employer.models import Employer, Employee
 # Register your models here.
 class workInline(admin.TabularInline):
     model=Work

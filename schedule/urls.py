@@ -7,6 +7,7 @@ urlpatterns = patterns('',
     url(r'^accounts/', include('registration.urls', namespace='registration')),
     url(r'^schedule/', include('timetable.urls', namespace='employee_schedule')),
     url(r'^messageboard/', include('messageboard.urls', namespace='messageboard')),
+    url(r'^employer/', include('employer.urls', namespace="employer")),
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
